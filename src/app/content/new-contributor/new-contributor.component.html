@@ -19,11 +19,11 @@
             <mat-card-content>
                     <mat-form-field class="full-width" appearance="fill">
                       <mat-label>Name</mat-label>
-                      <input matInput (keyup)="validate()" [(ngModel)]="contributor.name" placeholder="Enter contributor name"  name="name" required>
+                      <input matInput (keyup)="validate()" [(ngModel)]="contributor.name" maxlength="50" placeholder="Enter contributor name"  name="name" required>
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Nationality</mat-label>
-                        <input matInput (keyup)="validate()" [(ngModel)]="contributor.nationality" placeholder="Enter contributor's nationality" name="nationality" required>
+                        <input matInput (keyup)="validate()" [(ngModel)]="contributor.nationality" maxlength="30" placeholder="Enter contributor's nationality" name="nationality" required>
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="fill">

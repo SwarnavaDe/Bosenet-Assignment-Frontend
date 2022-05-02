@@ -54,7 +54,7 @@ export class NewContributorComponent implements OnInit {
   }
   validate(){
     this.error="";
-    var regex = new RegExp("^(?!.*[0-9])");
+    var regex = new RegExp("^(?!.*[0-9]*[?!@#$%^&*()<>])");
     if(!regex.test(this.contributor.name) || !regex.test(this.contributor.nationality)){
       this.error = "Please enter valid data."
     }
