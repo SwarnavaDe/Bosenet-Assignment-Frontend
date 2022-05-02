@@ -5,7 +5,18 @@
         Assign contributors to the team
     </span>
 </div>
+
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card *ngIf="error.length!=0" class = "failure-box" >
+        <mat-icon matPrefix [inline]="true" style = "color: red; font-size: 60px;">
+            cancel
+        </mat-icon><br><br>
+        <h2>Failed</h2>
+        <span class="success-text">{{error}}</span><br><br>
+        <button mat-raised-button color="primary" routerLink="/home">Home</button> &nbsp; &nbsp;
+        <button mat-raised-button color="primary" routerLink="/all-teams">View Teams</button>
+    </mat-card>
+
     <mat-card *ngIf="success" class = "success-box" >
         <mat-icon matPrefix [inline]="true" style = "color: green; font-size: 60px;">
             check_circle
@@ -16,14 +27,15 @@
         <button mat-raised-button color="primary" routerLink="/all-teams">View Teams</button>
     </mat-card>
 
-    <mat-card *ngIf="!success"  class="box">
+
+    <mat-card *ngIf="!success && error.length==0"  class="box">
         <mat-card-content>
-        <span><b>Team Name :</b> {{team.name}}</span><br><br>
-        <span><b>Team Lead :</b> {{team.teamLead}}</span><br><br>
+        <span><b>Team Name :</b> {{this.team.name}}</span><br><br>
+        <span><b>Team Lead :</b> {{this.team.teamLead}}</span><br><br>
         <div style="height: 120px;width:380px;display: block;margin-bottom:2px;overflow-y: auto;overflow-x: hidden;"> 
             <span><b>Contributors :&nbsp;</b></span><span *ngIf="team.contributors.length==0">No Contributors assigned.</span>
                 <br>
-            <mat-chip-list *ngIf="team.contributors.length!=0">
+            <mat-chip-list *ngIf="this.team.contributors.length!=0">
                 <mat-chip *ngFor="let teamMember of team.contributors">
                   {{teamMember.name}}
                 </mat-chip>         
@@ -47,7 +59,7 @@
         <button mat-raised-button color="primary" style="width: 100%;bottom: 0;" (click)="submit()">Submit</button>
         </div>
     </mat-card>
-    <mat-card *ngIf="!success" class="box" >
+    <mat-card *ngIf="!success && error.length==0" class="box" >
        <span style="font-size: 18px;padding-bottom: 7px;">{{unassignedContributors.length!=0? 'Assignable Contributors':'No contributors left to be assigned.'}}</span><br>
         <div *ngIf="unassignedContributors.length!=0" style="overflow: auto;height: 98%;padding-top: 10px;">
         <table id="contributors">

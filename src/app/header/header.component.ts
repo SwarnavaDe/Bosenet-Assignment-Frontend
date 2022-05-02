@@ -1,4 +1,3 @@
-import { ContributerService } from './../contributer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,14 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   list:any[] = []
-  constructor(private service: ContributerService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.service.getAllContributers().subscribe(data=>{
-      this.list = data;
-      console.log(this.list)
-    })
-
+ 
   }
 
 }

@@ -5,7 +5,7 @@
         </mat-icon><br><br>
         <h2>Successful</h2>
         <span class="success-text">Contributor has been created successfully.</span><br><br>
-        <button mat-raised-button color="primary" routerLink="/home">Home</button>
+        <button mat-raised-button color="primary" (click)="goToHome()">Done</button>
     </mat-card>
     <mat-card class="box" *ngIf="!success">    
         <mat-card-header >
@@ -27,7 +27,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
+                        <mat-label>Onboard date</mat-label>
                         <input matInput (keyup)="validate()" [matDatepicker]="picker" name="startDate" [(ngModel)]="contributor.onboardDate" required>
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -35,7 +35,7 @@
                       </mat-form-field>
 
                       <mat-form-field class="full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
+                        <mat-label>Exit date</mat-label>
                         <input matInput (keyup)="validate()" [matDatepicker]="pickerTo" name="endDate" [(ngModel)]="contributor.exitDate" required>
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>

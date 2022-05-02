@@ -30,6 +30,12 @@
     border-top: 5px solid green;
     text-align: center;
 }
+.failure-box{
+    width: 30%;
+    padding: 50px 10px 10px 30px;
+    border-top: 5px solid red;
+    text-align: center;
+}
 .success-text{
     color: grey;
     line-height: 30px;

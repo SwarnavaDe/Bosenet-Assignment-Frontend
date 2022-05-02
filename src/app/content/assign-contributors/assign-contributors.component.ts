@@ -18,18 +18,22 @@ export class AssignContributorsComponent implements OnInit {
   unassignedContributors:any[]=[];
   temporaryContributors:any[]=[];
 
+  error:string = '';
   success:boolean = false;
 
   ngOnInit(): void {
     this.route.params.subscribe(params=>{
-      this.id = params['id'];
-      this.contributerService.getTeamById(this.id).subscribe(data=>{
-        this.team = data;
-        this.assignedContributors = this.team.contributors;
-        this.contributerService.getAllContributers().subscribe(resp=>{
-          this.contributors = resp;
-         this.filterContributorList(this.contributors);
-        })
+        this.id = params['id'];
+        this.contributerService.getTeamById(this.id).subscribe({next: data=>{
+            this.team = data;
+            this.assignedContributors = this.team.contributors;
+            this.contributerService.getAllContributers().subscribe(resp=>{
+                this.contributors = resp;
+                this.filterContributorList(this.contributors);
+            })
+        },error: e=>{
+          this.error = 'Team is not found'
+        }
       }); 
     });
 
