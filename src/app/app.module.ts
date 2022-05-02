@@ -31,6 +31,7 @@ import { AllProjectsComponent } from './content/all-projects/all-projects.compon
 import { AllContributorsComponent } from './content/all-contributors/all-contributors.component';
 import { AssignContributorsComponent } from './content/assign-contributors/assign-contributors.component';
 import { AssignTeamPopupComponent } from './content/assign-team-popup/assign-team-popup.component';
+import { PageNotFoundComponent } from './content/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AssignTeamPopupComponent } from './content/assign-team-popup/assign-tea
     AllProjectsComponent,
     AllContributorsComponent,
     AssignContributorsComponent,
-    AssignTeamPopupComponent
+    AssignTeamPopupComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

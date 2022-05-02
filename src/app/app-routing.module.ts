@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './content/page-not-found/page-not-found.component';
 import { AssignContributorsComponent } from './content/assign-contributors/assign-contributors.component';
 import { AllContributorsComponent } from './content/all-contributors/all-contributors.component';
 import { AllProjectsComponent } from './content/all-projects/all-projects.component';
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path:'all-teams', component:AllTeamsComponent},
   {path:'all-projects', component:AllProjectsComponent},
   {path:'all-contributors', component:AllContributorsComponent},
-  {path:'assign-contributors/:id', component:AssignContributorsComponent}
+  {path:'assign-contributors/:id', component:AssignContributorsComponent},
+  {path:'page-not-found', component:PageNotFoundComponent},
+  {path:'**',redirectTo:'page-not-found'}
 ];
 
 @NgModule({
