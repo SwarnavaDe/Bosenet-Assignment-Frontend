@@ -1,0 +1,27 @@
+<div style=" text-align: center;padding-top: 10px;padding-left: 60px;padding-right: 30px;">
+    
+    <span style="float: left;font-size: 26px;margin-top: 10px;"> 
+        <mat-icon [inline]="true" (click)="goToHome()" style="cursor: pointer;">arrow_back</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+        Teams
+    </span>
+</div>
+<div style="width:95%;max-height:99%;margin-left: 60px;margin-right: auto;margin-top: 40px;overflow-x: hidden;overflow-y: auto;">
+<div  fxLayout="row wrap" fxLayoutGap="15px grid">
+    <div fxFlex="33.33%" *ngFor="let team of teams">
+        <mat-card  class="team-card">
+            <span><b>Team Name :</b> {{team.name}}</span>&nbsp;&nbsp;&nbsp;
+            <span><b>Team Lead :</b> {{team.teamLead}}</span><br><br>
+            <span><b>Contributors :&nbsp;</b></span>
+            <span *ngIf="team.contributors.length==0">No Contributors assigned.</span>
+            <div style="height: 90px;max-width:350px;display: block;margin-bottom: 2px;overflow-y: auto;overflow-x: hidden;"> 
+                <mat-chip-list *ngIf="team.contributors.length!=0">
+                    <mat-chip *ngFor="let teamMember of team.contributors">
+                      {{teamMember.name}}
+                    </mat-chip>         
+                  </mat-chip-list>
+            </div>
+            <button mat-raised-button color="primary" style="float: right;" (click)="redirect(team.id)">Assign Contributors</button>
+        </mat-card>
+    </div>
+</div>
+</div>

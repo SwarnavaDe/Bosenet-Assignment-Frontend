@@ -1,0 +1,77 @@
+<div *ngIf="!success" style=" text-align: center;padding-top: 10px;padding-left: 90px;padding-right: 30px;text-align: center;">
+    
+    <span style="float: left;font-size: 24px;margin-top: 10px;"> 
+        <mat-icon [inline]="true" (click)="goToHome()" style="cursor: pointer;">arrow_back</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+        Assign contributors to the team
+    </span>
+</div>
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card *ngIf="success" class = "success-box" >
+        <mat-icon matPrefix [inline]="true" style = "color: green; font-size: 60px;">
+            check_circle
+        </mat-icon><br><br>
+        <h2>Successful</h2>
+        <span class="success-text">Contributor has been created successfully.</span><br><br>
+        <button mat-raised-button color="primary" routerLink="/home">Home</button> &nbsp; &nbsp;
+        <button mat-raised-button color="primary" routerLink="/all-teams">View Teams</button>
+    </mat-card>
+
+    <mat-card *ngIf="!success"  class="box">
+        <mat-card-content>
+        <span><b>Team Name :</b> {{team.name}}</span><br><br>
+        <span><b>Team Lead :</b> {{team.teamLead}}</span><br><br>
+        <div style="height: 120px;width:380px;display: block;margin-bottom:2px;overflow-y: auto;overflow-x: hidden;"> 
+            <span><b>Contributors :&nbsp;</b></span><span *ngIf="team.contributors.length==0">No Contributors assigned.</span>
+                <br>
+            <mat-chip-list *ngIf="team.contributors.length!=0">
+                <mat-chip *ngFor="let teamMember of team.contributors">
+                  {{teamMember.name}}
+                </mat-chip>         
+              </mat-chip-list>
+              
+        </div><br>
+        <br>
+        <div style="border:1px solid #d8d6d6;height: 200px;width:380px;overflow-y: auto;overflow-x: hidden;background-color: #ffffff;margin-bottom: 10px;">
+            <mat-label><b>Contributors to be assigned</b></mat-label><br>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip *ngFor="let contributor of temporaryContributors" (removed)="remove(contributor)">
+                {{contributor.name}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+            </mat-chip-list>
+        </div>
+       </mat-card-content>
+        <div style="display: block;margin-top: 20px;">
+        <button mat-raised-button color="primary" style="width: 100%;bottom: 0;" (click)="submit()">Submit</button>
+        </div>
+    </mat-card>
+    <mat-card *ngIf="!success" class="box" >
+       <span style="font-size: 18px;padding-bottom: 7px;">{{unassignedContributors.length!=0? 'Assignable Contributors':'No contributors left to be assigned.'}}</span><br>
+        <div *ngIf="unassignedContributors.length!=0" style="overflow: auto;height: 98%;padding-top: 10px;">
+        <table id="contributors">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Nationality</th>
+                    <th>Onboard Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let contributor of unassignedContributors" >
+                    <td>{{contributor.name}}</td>
+                    <td>{{contributor.nationality}}</td>
+                    <td>{{contributor.onboardDate | date}}</td>
+                    <td>
+                        <button mat-raised-button color="primary" style="float: right;" (click)="add(contributor)">Add to team</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </mat-card>
+    
+
+</div>

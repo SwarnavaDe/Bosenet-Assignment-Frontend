@@ -1,0 +1,23 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box" (click)="navigateToaddContributor('new-contributor')">
+        <mat-icon matPrefix [inline]="true" style = " font-size: 60px;">person_add</mat-icon> 
+        <span class="card-text"> Add Contributor</span>
+       
+    </mat-card>
+    <mat-card class="box" (click)="navigateToaddContributor('all-teams')" >
+        <mat-icon matPrefix [inline]="true" style = " font-size: 60px;">group_add</mat-icon>
+        <span class="card-text">Assign Contributor to Team</span>
+    </mat-card>
+    
+
+</div>
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box" (click)="navigateToaddContributor('all-projects')">
+        <mat-icon matPrefix [inline]="true" style = " font-size: 60px;">add_circle</mat-icon>
+        <span class="card-text">Assign Team to Project</span>
+    </mat-card>
+    <mat-card class="box" (click)="navigateToaddContributor('all-contributors')">
+        <mat-icon matPrefix [inline]="true" style = " font-size: 60px;">visibility</mat-icon>
+        <span class="card-text">View Contributors</span>
+    </mat-card>
+</div>

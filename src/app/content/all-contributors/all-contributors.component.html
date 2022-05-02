@@ -1,0 +1,63 @@
+<div style=" text-align: center;padding-top: 10px;padding-left: 60px;padding-right: 30px;padding-bottom: 10px;">
+    
+    <span style="float: left;font-size: 26px;margin-top: 10px;"> 
+        <mat-icon [inline]="true" (click)="goToHome()" style="cursor: pointer;">arrow_back</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+        Contributors
+    </span>
+    <div style="float: right;display: inline; font-size: 15px;">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a on-board date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date" [(ngModel)]="startDate" name="start">
+            <input matEndDate placeholder="End date" [(ngModel)]="endDate" name="end">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <button mat-raised-button color="primary" (click)="search()">Search&nbsp;&nbsp;<mat-icon>search</mat-icon>&nbsp;</button>&nbsp;
+        <button mat-raised-button color="warn" (click)="clear()">Clear&nbsp;&nbsp;<mat-icon>close</mat-icon> </button>
+    </div>
+
+</div>
+<div *ngIf="contributors.length==0" fxLayout="row" fxLayoutAlign="center center"  style="width:94%;max-height:75%;margin-left: 60px;margin-right: auto;margin-top: 40px;overflow-y: auto;overflow-x: hidden;padding-top: 10px;">
+   <h2> No records found in the given date range.</h2>
+</div>
+<div *ngIf="contributors.length!=0" style="width:94%;max-height:76%;margin-left: 60px;margin-right: auto;margin-top: 50px;overflow-y: auto;overflow-x: hidden;padding-bottom: 10px;">
+    <div  fxLayout="row wrap" fxLayoutGap="15px grid">
+        <div fxFlex="33.33%" *ngFor="let contributor of contributors">
+            <mat-card  class="contributor-card">
+                <span style="font-size: 22px;text-align: center;line-height: 40px;"> {{contributor.contributor.name}}</span><br>
+                <span><b>Nationality:</b> {{contributor.contributor.nationality}}</span><br>
+                <span><b>Onboard Date:</b> {{contributor.contributor.onboardDate | date}}</span>&nbsp;&nbsp;
+                <span><b>Exit Date:</b> {{contributor.contributor.exitDate | date}}</span><br><br>
+                <span><b>Assigned Team(s) :&nbsp;</b></span>
+                <span *ngIf="contributor.teamNames.length==0">No Team assigned.</span>
+                <div style="height: 50px;display: block;margin-bottom: 20px;overflow-x: hidden;width: 380px;overflow-y: auto;"> 
+
+                    <mat-chip-list *ngIf="contributor.teamNames.length!=0">
+                        <mat-chip color="accent" *ngFor="let team of contributor.teamNames">
+                            {{team}}
+                        </mat-chip>       
+                    </mat-chip-list>
+                </div>
+                <span><b>Assigned Project(s) :&nbsp;</b></span>
+                <span *ngIf="contributor.projectNames.length==0">No Projects assigned.</span>
+                <div style="height: 50px;display: block;margin-bottom: 20px;overflow-x: hidden;width: 380px;overflow-y: auto;">
+
+                    <mat-chip-list *ngIf="contributor.projectNames.length!=0">
+                        <mat-chip color="accent" *ngFor="let project of contributor.projectNames">
+                            {{project}}
+                          </mat-chip>       
+                    </mat-chip-list>
+                </div><br>
+                <!-- <button mat-raised-button color="primary" style="float: right;" [disabled]="project.team!=null">
+                    {{project.team==null?'Assign Team':'Team already assigned'}}
+                </button> -->
+            </mat-card>
+        </div>
+    </div>
+</div>

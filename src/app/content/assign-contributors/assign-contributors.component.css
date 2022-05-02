@@ -1,0 +1,66 @@
+
+.main-wrapper{
+    height: 90%;
+    background-color: white;
+    padding-top: 30px;
+    width: 100%;
+}
+
+.box{
+   
+    position: relative;
+    top: 0;
+    opacity: 1;
+    margin-top: 20px;
+    padding: 20px 30px 40px 30px;
+    background-color: white;
+    border-radius: 10px;
+    transform: scale(1);
+    min-width: 400px;
+    max-width: 850px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin-right: 34px;
+    height: 90%;
+   
+}
+
+.success-box{
+    width: 30%;
+    padding: 50px 10px 10px 30px;
+    border-top: 5px solid green;
+    text-align: center;
+}
+.success-text{
+    color: grey;
+    line-height: 30px;
+}
+
+.card-text{
+    font-size: 18px;
+}
+#contributors {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #contributors td, #contributors th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #contributors tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #contributors tr:hover {background-color: #ddd;}
+  
+  #contributors th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .chip-list{
+      max-height: 30px !important;
+  }

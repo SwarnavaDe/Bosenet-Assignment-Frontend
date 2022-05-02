@@ -1,0 +1,39 @@
+<div *ngIf="success" class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card  class = "success-box" >
+        <mat-icon matPrefix [inline]="true" style = "color: green; font-size: 60px;">
+            check_circle
+        </mat-icon><br><br>
+        <h2>Successful</h2>
+        <span class="success-text">Team assigned successfully.</span><br><br>
+        <button mat-raised-button color="primary" routerLink="/home">Home</button>
+    </mat-card>
+</div>
+<div *ngIf="!success" style=" text-align: center;padding-top: 10px;padding-left: 60px;padding-right: 30px;">
+    
+    <span style="float: left;font-size: 26px;margin-top: 10px;"> 
+        <mat-icon [inline]="true" (click)="goToHome()" style="cursor: pointer;">arrow_back</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+        Projects
+    </span>
+</div>
+<div *ngIf="!success" style="width:95%;height:95%;padding-top: 20px;margin-left: 60px;margin-right: auto;margin-top: 45px; overflow-x: hidden;overflow-y: auto;">
+    <div  fxLayout="row wrap" fxLayoutGap="15px grid">
+        <div fxFlex="33.33%" *ngFor="let project of projects">
+            <mat-card  class="project-card">
+                <span><b>Project Name :</b> {{project.name}}</span><br>
+                <span><b>Project Manager ID :</b> {{project.projectManagerId}}</span><br>
+                <div style="height: 20px;display: block;margin-bottom: 20px;"> 
+                    <span><b>Assigned Team :&nbsp;</b></span><span *ngIf="project.team==null">No Team assigned.</span>
+                        <br>
+                    <mat-chip-list *ngIf="project.team!=null">
+                        <mat-chip>
+                          {{project.team.name}}
+                        </mat-chip>         
+                      </mat-chip-list>
+                </div><br>
+                <button mat-raised-button color="primary" style="float: right;" (click)="openTeams(project)" [disabled]="project.team!=null">
+                    {{project.team==null?'Assign Team':'Team already assigned'}}
+                </button>
+            </mat-card>
+        </div>
+    </div>
+</div>

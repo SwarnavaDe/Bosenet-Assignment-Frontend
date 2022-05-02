@@ -1,0 +1,53 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card *ngIf="success" class = "success-box" >
+        <mat-icon matPrefix [inline]="true" style = "color: green; font-size: 60px;">
+            check_circle
+        </mat-icon><br><br>
+        <h2>Successful</h2>
+        <span class="success-text">Contributor has been created successfully.</span><br><br>
+        <button mat-raised-button color="primary" routerLink="/home">Home</button>
+    </mat-card>
+    <mat-card class="box" *ngIf="!success">    
+        <mat-card-header >
+            
+           <mat-card-title >
+                <mat-icon [inline]="true" (click)="goToHome()" style="cursor: pointer;float: left;">arrow_back</mat-icon><br><br>
+                Add Contributor
+            </mat-card-title> 
+        </mat-card-header>
+        <form (ngSubmit)="formSubmit()">
+            <mat-card-content>
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Name</mat-label>
+                      <input matInput (keyup)="validate()" [(ngModel)]="contributor.name" placeholder="Enter contributor name"  name="name" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Nationality</mat-label>
+                        <input matInput (keyup)="validate()" [(ngModel)]="contributor.nationality" placeholder="Enter contributor's nationality" name="nationality" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput (keyup)="validate()" [matDatepicker]="picker" name="startDate" [(ngModel)]="contributor.onboardDate" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput (keyup)="validate()" [matDatepicker]="pickerTo" name="endDate" [(ngModel)]="contributor.exitDate" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerTo></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-error>{{error}}</mat-error>
+            </mat-card-content>
+            <button type="submit" mat-raised-button color="primary" class="btn-block">
+                Submit <mat-icon *ngIf="spinnerVisible"><mat-spinner color="accent" diameter="20"></mat-spinner></mat-icon>
+            </button>
+        </form>
+    </mat-card>
+
+</div>

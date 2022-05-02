@@ -1,0 +1,33 @@
+.main-wrapper{
+    height: 100%;
+    background-color: white;
+    overflow-y: auto;
+    width: 100px;
+}
+
+.box{
+    text-align: center;
+    position: relative;
+    top: 0;
+    opacity: 1;
+    margin-top: 20px;
+    
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    transform: scale(1);
+    width: 350px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    margin-right: 34px;
+   
+}
+.contributor-card{
+    width:90%;
+    background-color: azure;
+    padding: 3px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 30px 10px 40px 13px;
+    height: 67%;
+}

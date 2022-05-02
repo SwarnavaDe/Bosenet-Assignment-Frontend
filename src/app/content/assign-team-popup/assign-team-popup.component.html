@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Assign a team to the <i>{{data.project.name}}</i> project</h2>
+<mat-dialog-content class="mat-typography">
+    <table id="contributors">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Team Lead</th>
+                <th>Team members</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let team of teams" >
+                <td>{{team.name}}</td>
+                <td>{{team.teamLead}}</td>
+                <td>
+                   <span *ngFor="let contributor of team.contributors"> {{contributor.name}},</span>
+                </td>
+                <td>
+                    <button mat-raised-button [mat-dialog-close]="team.id"  color="primary" style="float: right;" >Assign</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>OK</button>
+</mat-dialog-actions>
